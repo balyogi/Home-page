@@ -1,0 +1,116 @@
+<section class="brands-image">
+
+<div class="container">
+<div class="brands-wrapper">
+  {% for block in section.blocks %}
+    <div class="brand-image-wrap">
+<img src="{{ block.settings.imageId|img_url:'master' }}">
+    </div>
+  {% endfor %}
+</div>
+</div>
+</section>
+{% schema %}
+{
+    "name": "Single Mobile Image",
+"class": "mobile-index-section",
+
+    "blocks": [
+        {
+            "type": "image_picker",
+            "name": "Mobile Image",
+        "settings": [
+            {
+            "type": "image_picker",
+            "id": "imageId",
+            "label": "Mobile Image"
+          }
+        ]
+    }
+],
+"presets": [
+  {
+    "name": "Custom Mobile Image",
+    "category": "Image",
+    "blocks": [
+      {
+        "type": "image_picker"
+      }
+    ]
+  }
+]
+}
+{% endschema %}
+{% stylesheet %}
+  .brand-image-wrap  
+  {
+    width:100%;
+  }
+.brands-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.brands-wrapper .brand-image-wrap {
+    width: 20%!important;
+    padding: 20px;
+}
+
+.brand-image-wrap img {
+    border-radius: 40px; 
+}
+  .brand-image-wrap img 
+  {
+    width:100%;
+  }
+  .slick-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+  .slick-list.draggable {
+    overflow: hidden;
+}
+{% endstylesheet %}
+ <script>
+    $(document).ready(function() {
+        $('.brands-wrapper').slick({
+  dots: true,
+  infinite:true,
+  speed: 300,
+      arrow: true,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll:4,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+		
+    });
+  </script>

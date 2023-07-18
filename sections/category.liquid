@@ -1,0 +1,90 @@
+<section class="category">
+<div class="container">
+<div class="category-wrapper">
+  {% for block in section.blocks %}
+  <div class="category-image">
+<img src="{{ block.settings.imageId|img_url:'master' }}">
+    <a href="{{ block.settings.url-2 }}">Shop Now </a>
+  </div>
+  {% endfor %}
+</div>
+</div>
+</section>
+{% schema %}
+{
+  "name": "Single Mobile Image",
+  "class": "mobile-index-section",
+  
+  "blocks": [
+    {
+      "type": "image_picker",
+      "name": "Mobile Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "imageId",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "url",
+          "id": "url-2",
+          "label": "Enter the URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "category collection",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image_picker"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+  .category-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content:space-between
+}
+.category-image a {
+    width: 100%;
+    background: red;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border-radius: 30px;
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+}
+.category-image {
+    width: 45%;
+}
+
+.category-image img {
+    width: 100%;
+}
+
+  @media screen and (max-width:768px)
+  {
+     .category-wrapper 
+    {
+   flex-direction: column;
+    }
+    .category-image {
+    width: 100%;
+      margin-bottom:40px;
+}
+  }
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
